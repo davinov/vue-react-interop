@@ -1,3 +1,4 @@
+import { VueLoaderPlugin } from 'vue-loader';
 import type { Configuration } from 'webpack';
 import 'webpack-dev-server';
 
@@ -17,10 +18,26 @@ export default {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
+        test: /\.vue$/,
+        use: 'vue-loader',
+      },
+
+      {
+        test: /\.(j|t)sx?$/,
+        use: {
+          loader: 'esbuild-loader',
+          options: {
+            loader: 'tsx',
+            target: 'es2019',
+          },
+        },
         exclude: /node_modules/,
       },
     ],
   },
+
+  plugins: [
+    // @ts-ignore
+    new VueLoaderPlugin(),
+  ],
 } satisfies Configuration;

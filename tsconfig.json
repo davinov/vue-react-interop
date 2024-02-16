@@ -5,7 +5,8 @@
     "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "allowJs": true
+    "allowJs": true,
+    "strict": true
   },
   "ts-node": {
     "esm": true,
