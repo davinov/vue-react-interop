@@ -17,12 +17,18 @@ export default defineComponent({
       rows: [1, 2, 3, 4, 5],
     };
   },
+
+  methods: {
+    alert(message: string) {
+      alert(message);
+    }
+  }
 });
 </script>
 
 <template>
   <div>
-    <ReactButton />
+    <ReactButton :props="{onClick: () => alert('clicked!')}" />
     <table>
       <tr>
         <th v-for="col in columns" :key="col">

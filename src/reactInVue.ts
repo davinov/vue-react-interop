@@ -1,5 +1,5 @@
 import { FunctionComponent as ReactComponent, createElement as createReactElement } from 'react';
-import { defineComponent, defineComponent as defineVueComponent } from 'vue';
+import { PropType, defineComponent, defineComponent as defineVueComponent } from 'vue';
 import { createRoot } from 'react-dom/client';
 
 export default function reactInVue<P extends Record<string, unknown>>(
@@ -9,6 +9,14 @@ export default function reactInVue<P extends Record<string, unknown>>(
   return defineVueComponent({
     name: 'Vue' + (reactComponent.displayName ?? reactComponent.name),
 
+    props: {
+      props: {
+        type: Object as PropType<P>,
+        default: () => {},
+        required: true,
+      },
+    },
+
     data(): {
       reactRoot?: ReturnType<typeof createRoot>;
     } {
@@ -17,9 +25,10 @@ export default function reactInVue<P extends Record<string, unknown>>(
 
     mounted() {
       this.reactRoot = createRoot(this.$el);
-      this.reactRoot.render(createReactElement(reactComponent));
+      this.reactRoot.render(createReactElement(reactComponent, this.props as P));
     },
-    unmount() {
+
+    beforeDestroy() {
       this.reactRoot?.unmount();
     },
 
