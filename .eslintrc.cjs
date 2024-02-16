@@ -6,8 +6,8 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended',
     'plugin:react/jsx-runtime',
+    'plugin:react/recommended',
     'plugin:vue/recommended',
   ],
   overrides: [
@@ -21,8 +21,9 @@ module.exports = {
       },
     },
   ],
-  parser: '@typescript-eslint/parser',
+  parser: 'vue-eslint-parser',
   parserOptions: {
+    parser: '@typescript-eslint/parser',
     ecmaVersion: 'latest',
     sourceType: 'module',
   },

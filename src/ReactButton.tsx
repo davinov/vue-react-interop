@@ -1,10 +1,10 @@
 import React from 'react';
-import type { PropsWithChildren } from 'react';
+import type { FunctionComponent, PropsWithChildren } from 'react';
 
-export type ButtonProps = PropsWithChildren<{
+export type ReactButtonProps = PropsWithChildren<{
   onClick: () => void;
 }>;
 
-export function ReactButton({ onClick, children }: ButtonProps) {
+export const ReactButton: FunctionComponent<ReactButtonProps> = function ReactButton({ onClick, children }: ReactButtonProps) {
   return <button onClick={onClick}>{children}</button>;
 }
