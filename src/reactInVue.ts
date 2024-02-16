@@ -1,5 +1,5 @@
 import { FunctionComponent as ReactComponent, createElement as createReactElement } from 'react';
-import { PropType, defineComponent, defineComponent as defineVueComponent } from 'vue';
+import { PropType, defineComponent, defineComponent as defineVueComponent, VNode } from 'vue';
 import { createRoot } from 'react-dom/client';
 
 export default function reactInVue<P extends Record<string, unknown>>(
@@ -21,6 +21,17 @@ export default function reactInVue<P extends Record<string, unknown>>(
       reactRoot?: ReturnType<typeof createRoot>;
     } {
       return {};
+    },
+
+    computed: {
+      childrenReactProp(): VNode[] | undefined {
+        if (this.$slots?.default) {
+          // use a VueInReact instance to convert VueNodes to ReactNodes
+          return this.$slots.default;
+        } else {
+          return undefined
+        }
+      }
     },
 
     mounted() {

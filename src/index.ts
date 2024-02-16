@@ -6,4 +6,3 @@ new Vue({
   el: '#vue-app',
   render: (h) => h(VueTable),
 });
-console.log(VueTable);

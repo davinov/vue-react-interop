@@ -34,7 +34,9 @@ export default defineComponent({
   <div>
     Button label: <input v-model="buttonLabel">
     Alert when clicked: <input v-model="alertText">
-    <ReactButton :props="{onClick: () => alert(alertText), label: buttonLabel}" />
+    <ReactButton :props="{onClick: () => alert(alertText), label: buttonLabel}">
+      <span>Vue content</span>
+    </ReactButton>
     <table>
       <tr>
         <th v-for="col in columns" :key="col">
