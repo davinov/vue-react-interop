@@ -5,6 +5,9 @@ export type ReactButtonProps = PropsWithChildren<{
   onClick: () => void;
 }>;
 
-export const ReactButton: FunctionComponent<ReactButtonProps> = function ReactButton({ onClick, children }: ReactButtonProps) {
+export const ReactButton: FunctionComponent<ReactButtonProps> = function ReactButton({
+  onClick,
+  children,
+}: ReactButtonProps) {
   return <button onClick={onClick}>{children}</button>;
-}
+};

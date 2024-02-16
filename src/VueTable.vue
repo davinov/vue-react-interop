@@ -25,23 +25,12 @@ export default defineComponent({
     <ReactButton />
     <table>
       <tr>
-        <th
-          v-for="col in columns"
-          :key="col"
-        >
+        <th v-for="col in columns" :key="col">
           {{ col }}
         </th>
       </tr>
-      <tr
-        v-for="row in rows"
-        :key="row"
-      >
-        <td
-          v-for="col in columns"
-          :key="col"
-        >
-          {{ col }} {{ row }}
-        </td>
+      <tr v-for="row in rows" :key="row">
+        <td v-for="col in columns" :key="col">{{ col }} {{ row }}</td>
       </tr>
     </table>
   </div>

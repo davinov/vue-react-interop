@@ -1,8 +1,11 @@
 import { FunctionComponent as ReactComponent, createElement as createReactElement } from 'react';
-import { defineComponent as defineVueComponent } from 'vue';
+import { defineComponent, defineComponent as defineVueComponent } from 'vue';
 import { createRoot } from 'react-dom/client';
 
-export default function reactInVue<P extends Record<string, unknown>>(reactComponent: ReactComponent<P>) {
+export default function reactInVue<P extends Record<string, unknown>>(
+  reactComponent: ReactComponent<P>,
+  renderWrapper?: Parameters<typeof defineComponent>[0]['render'],
+) {
   return defineVueComponent({
     name: 'Vue' + (reactComponent.displayName ?? reactComponent.name),
 
@@ -20,8 +23,10 @@ export default function reactInVue<P extends Record<string, unknown>>(reactCompo
       this.reactRoot?.unmount();
     },
 
-    render(h) {
-      return h('div', { class: 'react-wrapper' });
-    },
+    render:
+      renderWrapper ??
+      function renderDefaultWrapper(h) {
+        return h('div', { class: 'react-wrapper' });
+      },
   });
 }
