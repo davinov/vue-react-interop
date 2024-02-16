@@ -5,7 +5,8 @@
   "scripts": {
     "lint": "eslint .",
     "dev": "webpack-dev-server",
-    "build": "webpack"
+    "build": "webpack",
+    "format": "npx prettier . --write"
   },
   "devDependencies": {
     "@types/react": "^18.2.55",

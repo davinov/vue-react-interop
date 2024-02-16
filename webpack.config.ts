@@ -1,4 +1,4 @@
-import type {Configuration} from 'webpack';
+import type { Configuration } from 'webpack';
 import 'webpack-dev-server';
 
 export default {
@@ -7,7 +7,7 @@ export default {
 
   devServer: {
     static: './public',
-    port: 7777
+    port: 7777,
   },
 
   resolve: {

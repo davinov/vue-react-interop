@@ -5,7 +5,7 @@ const config = {
   printWidth: 100,
   singleQuote: true,
   trailingComma: 'all',
-  tabWidth: 2
+  tabWidth: 2,
 };
 
-export default config;
+module.exports = config;
