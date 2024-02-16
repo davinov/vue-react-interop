@@ -32,6 +32,15 @@ export default function reactInVue<P extends Record<string, unknown>>(
       this.reactRoot?.unmount();
     },
 
+    watch: {
+      props: {
+        deep: true,
+        handler() {
+          this.reactRoot?.render(createReactElement(reactComponent, this.props as P));
+        },
+      }
+    },
+
     render:
       renderWrapper ??
       function renderDefaultWrapper(h) {

@@ -11,10 +11,14 @@ export default defineComponent({
   data(): {
     columns: string[];
     rows: number[];
+    alertText: string;
+    buttonLabel: string;
   } {
     return {
       columns: ['a', 'b', 'c'],
       rows: [1, 2, 3, 4, 5],
+      alertText: 'Clicked!',
+      buttonLabel: 'Click me',
     };
   },
 
@@ -28,7 +32,9 @@ export default defineComponent({
 
 <template>
   <div>
-    <ReactButton :props="{onClick: () => alert('clicked!')}" />
+    Button label: <input v-model="buttonLabel">
+    Alert when clicked: <input v-model="alertText">
+    <ReactButton :props="{onClick: () => alert(alertText), label: buttonLabel}" />
     <table>
       <tr>
         <th v-for="col in columns" :key="col">
