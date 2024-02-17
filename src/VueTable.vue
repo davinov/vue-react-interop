@@ -1,12 +1,13 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import reactInVue from './reactInVue';
-import { ReactButton } from './ReactButton';
-import type { ReactButtonProps } from './ReactButton';
+import { ReactButton, ReactButtonProps } from './ReactButton';
+import { ReactCell, ReactCellProps } from './ReactCell';
 
 export default defineComponent({
   components: {
     ReactButton: reactInVue<ReactButtonProps>(ReactButton),
+    ReactCell: reactInVue<ReactCellProps>(ReactCell),
   },
   data(): {
     columns: string[];
@@ -39,12 +40,22 @@ export default defineComponent({
     </ReactButton>
     <table>
       <tr>
-        <th v-for="col in columns" :key="col">
+        <th
+          v-for="col in columns"
+          :key="col"
+        >
           {{ col }}
         </th>
       </tr>
-      <tr v-for="row in rows" :key="row">
-        <td v-for="col in columns" :key="col">{{ col }} {{ row }}</td>
+      <tr
+        v-for="row in rows"
+        :key="row"
+      >
+        <ReactCell
+          v-for="col in columns"
+          :key="col"
+          :props="{label: `${col} ${row}`}"
+        />
       </tr>
     </table>
   </div>

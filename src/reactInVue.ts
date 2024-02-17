@@ -26,7 +26,7 @@ export default function reactInVue<P extends Record<string, unknown>>(
     computed: {
       childrenReactProp(): VNode[] | undefined {
         if (this.$slots?.default) {
-          // use a VueInReact instance to convert VueNodes to ReactNodes
+          // TODO: use a VueInReact instance to convert VueNodes to ReactNodes?
           return this.$slots.default;
         } else {
           return undefined
@@ -55,7 +55,7 @@ export default function reactInVue<P extends Record<string, unknown>>(
     render:
       renderWrapper ??
       function renderDefaultWrapper(h) {
-        return h('div', { class: 'react-wrapper' });
+        return h('div', { class: 'reactInVue-wrapper', style: {display: 'contents'} });
       },
   });
 }
