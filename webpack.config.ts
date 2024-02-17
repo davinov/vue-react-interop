@@ -37,7 +37,7 @@ export default {
   },
 
   plugins: [
-    // @ts-ignore
+    // @ts-expect-error :shrug:
     new VueLoaderPlugin(),
   ],
 } satisfies Configuration;
