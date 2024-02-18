@@ -3,6 +3,13 @@ import { PropType, defineComponent, defineComponent as defineVueComponent, VNode
 import { createRoot } from 'react-dom/client';
 
 // TODO enable StrictMode
+
+/**
+ * From a React component, generates a vue component.
+ *
+ * The react components props can be given in the prop `props`
+ * of the vue component.
+ */
 export default function reactInVue<P extends Record<string, unknown>>(
   reactComponent: ReactComponent<P>,
   renderWrapper?: Parameters<typeof defineComponent>[0]['render'],
@@ -48,7 +55,6 @@ export default function reactInVue<P extends Record<string, unknown>>(
       props: {
         deep: true,
         handler() {
-          console.log('react rendering')
           this.reactRoot?.render(createReactElement(reactComponent, this.props as P));
         },
       },
