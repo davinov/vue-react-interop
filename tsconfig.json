@@ -16,5 +16,8 @@
       "moduleResolution": "NodeNext"
     }
   },
-  "exclude": ["dist", "node_modules"]
+  "exclude": ["dist", "node_modules"],
+  "vueCompilerOptions": {
+    "target": 2.7
+  }
 }

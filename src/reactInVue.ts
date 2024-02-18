@@ -2,6 +2,7 @@ import { FunctionComponent as ReactComponent, createElement as createReactElemen
 import { PropType, defineComponent, defineComponent as defineVueComponent, VNode } from 'vue';
 import { createRoot } from 'react-dom/client';
 
+// TODO enable StrictMode
 export default function reactInVue<P extends Record<string, unknown>>(
   reactComponent: ReactComponent<P>,
   renderWrapper?: Parameters<typeof defineComponent>[0]['render'],
@@ -29,9 +30,9 @@ export default function reactInVue<P extends Record<string, unknown>>(
           // TODO: use a VueInReact instance to convert VueNodes to ReactNodes?
           return this.$slots.default;
         } else {
-          return undefined
+          return undefined;
         }
-      }
+      },
     },
 
     mounted() {
@@ -47,15 +48,16 @@ export default function reactInVue<P extends Record<string, unknown>>(
       props: {
         deep: true,
         handler() {
+          console.log('react rendering')
           this.reactRoot?.render(createReactElement(reactComponent, this.props as P));
         },
-      }
+      },
     },
 
     render:
       renderWrapper ??
       function renderDefaultWrapper(h) {
-        return h('div', { class: 'reactInVue-wrapper', style: {display: 'contents'} });
+        return h('div', { class: 'reactInVue-wrapper', style: { display: 'contents' } });
       },
   });
 }
