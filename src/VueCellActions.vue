@@ -1,8 +1,14 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
+import { ReactButton, ReactButtonProps } from './ReactButton';
+import reactInVue from './reactInVue';
 
 export default defineComponent({
   name: 'CellActions',
+
+  components: {
+    ReactButton: reactInVue<ReactButtonProps>(ReactButton),
+  },
 
   props: {
     currentValue: {
@@ -28,9 +34,7 @@ export default defineComponent({
         v-model="currentInputValue"
         :size="2"
       >
-      <button @click="$emit('save', currentInputValue)">
-        Save
-      </button>
+      <ReactButton :props="{ label: 'Save', onClick: () => $emit('save', currentInputValue)} "/>
     </div>
     <button @click="$emit('delete')">
       Delete
