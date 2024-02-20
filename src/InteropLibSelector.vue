@@ -1,17 +1,18 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 
+import { interopLib, INTEROP_LIBS, changeInteropLib } from './interop-lib';
+
 export default defineComponent({
   name: 'InteropLibSelector',
 
   data() {
-    return { interopLib: localStorage.interopLib ?? 'local' };
+    return { INTEROP_LIBS, interopLib };
   },
 
   methods: {
-    changeInteropLib(v: 'vuereact-combined' | 'local') {
-      localStorage.interopLib = v;
-      window.location.reload();
+    changeInteropLib(v: (typeof INTEROP_LIBS)[number]) {
+      changeInteropLib(v);
     },
   },
 });
@@ -19,7 +20,6 @@ export default defineComponent({
 
 <template>
   <select :value="interopLib" @input="changeInteropLib($event.target.value)">
-    <option>vuereact-combined</option>
-    <option>local</option>
+    <option v-for="i in INTEROP_LIBS" :key="i">{{ i }}</option>
   </select>
 </template>

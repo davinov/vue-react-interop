@@ -3,6 +3,7 @@ import { defineComponent, PropType } from 'vue';
 import { ReactButton, ReactButtonProps } from './ReactButton';
 import reactInVue from './reactInVue';
 import { applyReactInVue } from 'vuereact-combined';
+import { useVRC } from './interop-lib';
 
 export default defineComponent({
   name: 'CellActions',
@@ -25,7 +26,7 @@ export default defineComponent({
   } {
     return {
       currentInputValue: this.currentValue,
-      useVRC: localStorage.interopLib === 'vuereact-combined',
+      useVRC,
     };
   },
 });

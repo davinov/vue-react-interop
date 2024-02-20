@@ -5,6 +5,7 @@ import { ReactButton, ReactButtonProps } from './ReactButton';
 import { ReactCell, ReactCellProps } from './ReactCell';
 
 import { applyReactInVue } from 'vuereact-combined';
+import { useVRC } from './interop-lib';
 
 const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
@@ -31,7 +32,7 @@ export default defineComponent({
       ],
       alertText: 'Clicked!',
       buttonLabel: 'Click me',
-      useVRC: localStorage.interopLib === 'vuereact-combined',
+      useVRC,
     };
   },
 
