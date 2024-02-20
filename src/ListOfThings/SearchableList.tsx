@@ -1,17 +1,20 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState } from 'react';
 import { Button, Input, Label, SearchField } from 'react-aria-components';
 
 import LOTR_CHARACTERS from './data/lotr-characters.json';
 
 export type SearchableListProps = Record<string, never>;
 
-
 const SearchableList: React.FC = function SearchableList() {
   const [currentSearch, setCurrentSearch] = useState('');
 
   const displayedCharacters = useMemo(() => {
-    return LOTR_CHARACTERS.filter((c) => currentSearch.length > 0 ? (c.name as string).toLowerCase().includes(currentSearch.toLowerCase()): true)
-  }, [currentSearch])
+    return LOTR_CHARACTERS.filter((c) =>
+      currentSearch.length > 0
+        ? (c.name as string).toLowerCase().includes(currentSearch.toLowerCase())
+        : true,
+    );
+  }, [currentSearch]);
 
   return (
     <div>
@@ -27,6 +30,6 @@ const SearchableList: React.FC = function SearchableList() {
       </ul>
     </div>
   );
-}
+};
 
 export { SearchableList };

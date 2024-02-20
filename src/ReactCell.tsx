@@ -20,7 +20,7 @@ export const ReactCell: FunctionComponent<ReactCellProps> = function ReactCell({
       <div className="cell__title">Cell {label}</div>
       {children}
       <div className="cell__actions"></div>
-      <ReactCellActions props={{currentValue: label}} on={{ save: onEdit }} />
+      <ReactCellActions props={{ currentValue: label }} on={{ save: onEdit }} />
     </td>
   );
 };
