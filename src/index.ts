@@ -3,7 +3,7 @@ import Vue from 'vue';
 import { createPinia, PiniaVuePlugin } from 'pinia';
 
 import VueTable from './VueTable.vue';
-import ContentChooser from './ListOfThings/ContentChooser.vue';
+import ContentChooserWrapper from './ListOfThings/ContentChooserWrapper.vue';
 import DynamicContent from './ListOfThings/DynamicContent.vue';
 import InteropLibSelector from './InteropLibSelector.vue';
 
@@ -17,7 +17,7 @@ new Vue({
       h(InteropLibSelector),
       h('br'),
       // h(VueTable),
-      h(ContentChooser),
+      h(ContentChooserWrapper),
       h(DynamicContent),
     ]),
 });
