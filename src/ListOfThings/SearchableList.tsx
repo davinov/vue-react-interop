@@ -3,12 +3,14 @@ import { Button, Input, Label, SearchField } from 'react-aria-components';
 
 import LOTR_CHARACTERS from './data/lotr-characters.json';
 
+type Character = (typeof LOTR_CHARACTERS)[number];
+
 export type SearchableListProps = Record<string, never>;
 
 const SearchableList: React.FC = function SearchableList() {
   const [currentSearch, setCurrentSearch] = useState('');
 
-  const displayedCharacters = useMemo(() => {
+  const displayedCharacters: Character[] = useMemo(() => {
     return LOTR_CHARACTERS.filter((c) =>
       currentSearch.length > 0
         ? (c.name as string).toLowerCase().includes(currentSearch.toLowerCase())
