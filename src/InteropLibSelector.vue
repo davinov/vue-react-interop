@@ -19,7 +19,15 @@ export default defineComponent({
 </script>
 
 <template>
-  <select :value="interopLib" @input="changeInteropLib($event.target.value)">
-    <option v-for="i in INTEROP_LIBS" :key="i">{{ i }}</option>
+  <select
+    :value="interopLib"
+    @input="changeInteropLib(($event.target as HTMLSelectElement).value)"
+  >
+    <option
+      v-for="i in INTEROP_LIBS"
+      :key="i"
+    >
+      {{ i }}
+    </option>
   </select>
 </template>
