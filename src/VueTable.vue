@@ -90,7 +90,7 @@ export default defineComponent({
           :key="`${col} ${rowIndex}`"
           :data-label="row[colIndex]"
           :label="row[colIndex]"
-          @edit="(newVal) => editValue(rowIndex, colIndex, newVal)"
+          @edit="(newVal: string) => editValue(rowIndex, colIndex, newVal)"
         />
       </tr>
     </table>
@@ -114,7 +114,7 @@ export default defineComponent({
           :data-label="row[colIndex]"
           :props="{
             label: row[colIndex],
-            onEdit: (newVal) => editValue(rowIndex, colIndex, newVal),
+            onEdit: (newVal: string) => editValue(rowIndex, colIndex, newVal),
           }"
         />
       </tr>
