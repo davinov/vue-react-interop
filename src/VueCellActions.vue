@@ -35,10 +35,7 @@ export default defineComponent({
 <template>
   <div>
     <div>
-      <input
-        v-model="currentInputValue"
-        :size="2"
-      >
+      <input v-model="currentInputValue" :size="2" />
       <ReactButtonVRC
         v-if="useVRC"
         :label="'Save'"
@@ -49,8 +46,6 @@ export default defineComponent({
         :props="{ label: 'Save', onClick: () => $emit('save', currentInputValue) }"
       />
     </div>
-    <button @click="$emit('delete')">
-      Delete
-    </button>
+    <button @click="$emit('delete')">Delete</button>
   </div>
 </template>

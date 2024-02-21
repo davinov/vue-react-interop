@@ -55,36 +55,23 @@ export default defineComponent({
 
 <template>
   <div>
-    Button label: <input v-model="buttonLabel"> Alert when clicked: <input v-model="alertText">
+    Button label: <input v-model="buttonLabel" /> Alert when clicked: <input v-model="alertText" />
 
-    <ReactButtonVRC
-      v-if="useVRC"
-      :label="buttonLabel"
-      @click="() => alert(alertText)"
-    >
+    <ReactButtonVRC v-if="useVRC" :label="buttonLabel" @click="() => alert(alertText)">
       <span>{{ buttonLabel }}</span> / <span>Vue content</span>
     </ReactButtonVRC>
 
-    <ReactButton
-      v-else
-      :props="{ onClick: () => alert(alertText), label: buttonLabel }"
-    >
+    <ReactButton v-else :props="{ onClick: () => alert(alertText), label: buttonLabel }">
       <span>{{ buttonLabel }}</span> / <span>Vue content</span>
     </ReactButton>
 
     <table v-if="useVRC">
       <tr>
-        <th
-          v-for="col in columns"
-          :key="col"
-        >
+        <th v-for="col in columns" :key="col">
           {{ col }}
         </th>
       </tr>
-      <tr
-        v-for="(row, rowIndex) in data"
-        :key="rowIndex"
-      >
+      <tr v-for="(row, rowIndex) in data" :key="rowIndex">
         <ReactCellVRC
           v-for="(col, colIndex) in columns"
           :key="`${col} ${rowIndex}`"
@@ -97,17 +84,11 @@ export default defineComponent({
 
     <table v-else>
       <tr>
-        <th
-          v-for="col in columns"
-          :key="col"
-        >
+        <th v-for="col in columns" :key="col">
           {{ col }}
         </th>
       </tr>
-      <tr
-        v-for="(row, rowIndex) in data"
-        :key="rowIndex"
-      >
+      <tr v-for="(row, rowIndex) in data" :key="rowIndex">
         <ReactCell
           v-for="(col, colIndex) in columns"
           :key="`${col} ${rowIndex}`"
