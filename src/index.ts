@@ -7,5 +7,10 @@ import InteropLibSelector from './InteropLibSelector.vue';
 
 new Vue({
   el: '#vue-app',
-  render: (h) => h('div', [h(InteropLibSelector), h(VueTable), h(ContainerForListOfThings)]),
+  render: (h) =>
+    h('div', [
+      h(InteropLibSelector),
+      // h(VueTable),
+      h(ContainerForListOfThings),
+    ]),
 });

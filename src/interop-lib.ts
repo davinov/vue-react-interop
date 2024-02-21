@@ -7,7 +7,7 @@ export function changeInteropLib(newInteropLib: (typeof INTEROP_LIBS)[number]) {
   window.location.reload();
 }
 
-export const interopLib: (typeof INTEROP_LIBS)[number] = localStorage.interopLib ?? DEFAULT_INTEROP_LIB;
+export const interopLib: (typeof INTEROP_LIBS)[number] =
+  localStorage.interopLib ?? DEFAULT_INTEROP_LIB;
 
 export const useVRC: boolean = localStorage.interopLib === 'vuereact-combined';
-
