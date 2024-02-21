@@ -3,17 +3,22 @@ import { defineComponent } from 'vue';
 import { mapStores } from 'pinia';
 import reactInVue from '../reactInVue';
 import { applyReactInVue } from 'vuereact-combined';
-import { SearchableList, SearchableListProps } from './SearchableList';
+import { SearchableList } from './SearchableList';
 import SidePanel from './SidePanel.vue';
 import { useVRC } from '../interop-lib';
 import { useDynamicContentStore } from './dynamicContentStore';
+import { CurrentContentDisplay } from './CurrentContentDisplay';
 
 export default defineComponent({
   name: 'DynamicContent',
   components: {
     SidePanel,
-    SearchableList: reactInVue<SearchableListProps>(SearchableList),
+
+    SearchableList: reactInVue(SearchableList),
     SearchableListVRC: applyReactInVue(SearchableList),
+
+    CurrentContentDisplay: reactInVue(CurrentContentDisplay),
+    CurrentContentDisplayVRC: applyReactInVue(CurrentContentDisplay),
   },
   computed: {
     useVRC() {
@@ -26,6 +31,9 @@ export default defineComponent({
 
 <template>
   <SidePanel>
+    <CurrentContentDisplayVRC v-if="useVRC" />
+    <CurrentContentDisplay v-else :props="{}" />
+
     <template v-if="dynamicContentStore.displayedElement === 'searchable-list'">
       <SearchableListVRC v-if="useVRC" />
       <SearchableList v-else :props="{}" />
