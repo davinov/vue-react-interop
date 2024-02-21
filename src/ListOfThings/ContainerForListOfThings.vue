@@ -19,8 +19,18 @@ export default defineComponent({
 
 <template>
   <div>
-    Show/hide: <input type="checkbox" v-model="isDisplayed" />
-    <SearchableList v-if="useVRC" v-show="isDisplayed" :props="{}" />
-    <SearchableListVRC v-else v-show="isDisplayed" />
+    Show/hide: <input
+      v-model="isDisplayed"
+      type="checkbox"
+    >
+    <SearchableList
+      v-if="useVRC"
+      v-show="isDisplayed"
+      :props="{}"
+    />
+    <SearchableListVRC
+      v-else
+      v-show="isDisplayed"
+    />
   </div>
 </template>
