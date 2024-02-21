@@ -1,12 +1,10 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { mapStores } from 'pinia';
 import reactInVue from '../reactInVue';
 import { applyReactInVue } from 'vuereact-combined';
 import { SearchableList, SearchableListProps } from './SearchableList';
 import SidePanel from './SidePanel.vue';
 import { useVRC } from '../interop-lib';
-import { useDynamicContentStore } from './dynamicContentStore';
 
 export default defineComponent({
   name: 'DynamicContent',
@@ -19,14 +17,16 @@ export default defineComponent({
     useVRC() {
       return useVRC;
     },
-    ...mapStores(useDynamicContentStore),
+    displayedElement() {
+      return this.$store.state.displayedElement;
+    },
   },
 });
 </script>
 
 <template>
   <SidePanel>
-    <template v-if="dynamicContentStore.displayedElement === 'searchable-list'">
+    <template v-if="displayedElement === 'searchable-list'">
       <SearchableListVRC v-if="useVRC" />
       <SearchableList v-else :props="{}" />
     </template>

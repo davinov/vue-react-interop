@@ -1,17 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import Vue from 'vue';
-import { createPinia, PiniaVuePlugin } from 'pinia';
 
 import VueTable from './VueTable.vue';
 import ContentChooserWrapper from './ListOfThings/ContentChooserWrapper.vue';
 import DynamicContent from './ListOfThings/DynamicContent.vue';
 import InteropLibSelector from './InteropLibSelector.vue';
-
-Vue.use(PiniaVuePlugin);
+import { store } from './vuex-store';
 
 new Vue({
   el: '#vue-app',
-  pinia: createPinia(),
+  store,
   render: (h) =>
     h('div', [
       h(InteropLibSelector),

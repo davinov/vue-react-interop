@@ -32,6 +32,7 @@
     "vue": "2.7.x",
     "vue-loader": "^15.11.1",
     "vuereact-combined": "^1.2.11",
+    "vuex": "^3.6.2",
     "webpack": "^5.90.2",
     "webpack-cli": "^5.1.4"
   }

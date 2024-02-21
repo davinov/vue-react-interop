@@ -1,7 +1,5 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { mapStores } from 'pinia';
-import { useDynamicContentStore } from './dynamicContentStore';
 import { ContentChooser } from './ContentChooser';
 import { applyReactInVue } from 'vuereact-combined';
 import { useVRC } from '../interop-lib';
@@ -11,21 +9,33 @@ export default defineComponent({
   name: 'ContentChooserWrapper',
 
   components: {
-    ContentChooser: reactInVue<Record<string, never>>(ContentChooser),
+    ContentChooser: reactInVue(ContentChooser),
     ContentChooserVRC: applyReactInVue(ContentChooser),
   },
 
   computed: {
-    ...mapStores(useDynamicContentStore),
-
     useVRC() {
       return useVRC;
-    }
+    },
+    resetSidePanel() {
+      return () => {
+        this.$store.commit('resetSidePanel');
+      };
+    },
+    showSearchableList() {
+      return () => {
+        this.$store.commit('showSearchableList');
+      };
+    },
   },
 });
 </script>
 
 <template>
-  <ContentChooserVRC v-if="useVRC" />
-  <ContentChooser v-else :props="{}" />
+  <ContentChooserVRC
+    v-if="useVRC"
+    :resetSidePanel="resetSidePanel"
+    :showSearchableList="showSearchableList"
+  />
+  <ContentChooser v-else :props="{ resetSidePanel, showSearchableList }" />
 </template>
